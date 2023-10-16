@@ -1,0 +1,8 @@
+.custome-bg {
+    background: radial-gradient(95.56% 95.56% at 50% 50%, #fff 0, #bddeff 100%);
+    overflow: hidden;
+    transition: 0.6s;
+}
+.custome-bg:hover {
+        transform: scale(1.2);
+}
