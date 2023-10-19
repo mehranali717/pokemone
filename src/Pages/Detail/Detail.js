@@ -12,8 +12,7 @@ const Detail =()=> {
         return "Error loading Pokémon data";
       }
       const imageSrcs = [data.sprites.back_default, data.sprites.back_shiny, data.sprites.front_default, data.sprites.front_shiny]
-      console.log(data)
-      return <div className="w-[900px] border rounded-lg shadow dark:bg-gray-800 p-5 flex flex-col items-center mx-auto my-[30px]">
+      return <div className="w-[900px] border rounded-lg shadow dark:bg-gray-800 flex flex-col items-center p-4 ms-[400px]">
                 <img
                 className="w-[130px] h-[130px] mb-3 rounded-full shadow-lg cursor-pointer custome-bg"
                 src={data.sprites.front_default}

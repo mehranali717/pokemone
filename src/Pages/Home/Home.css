@@ -6,3 +6,6 @@
 .custome-bg:hover {
         transform: scale(1.2);
 }
+.heightScroable {
+    height: 350px !important;
+}
