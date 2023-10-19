@@ -1,16 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./Favourite.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useDispatch, useSelector } from "react-redux";
-// import { useGetPokemonByNameQuery } from "../../Services/Pokemone/Pokemone";
-import { removeFromFavorites } from "../../Services/Pokemone/PokemoneSlice";
+import {useFavorites} from "../../Hooks/useFavorites";
 AOS.init();
 const Favourite = () => {
+  const [favorites, toggleFavorite] = useFavorites("favorites")
+  console.log({favorites});
   const [isDisplay, setIsDisplay] = useState(false);
-  const dispatch =useDispatch()
-  const favouriteList = useSelector((state) => state.addToFavorites.list);
   return (
     <>
       <div
@@ -23,7 +21,7 @@ const Favourite = () => {
             className="w-[25px] h-[25px] pt-[5px]"
           />
           <span className="bg-[#fd4b6b] rounded-[50%] text-[#fff] inline-block text-[12px] font-[600] absolute right-[-12px] text-center top-[-5px] w-[21px] h-[21px]">
-            {favouriteList.length}
+            {favorites.length}
           </span>
         </div>
         <span className="text-[#fff] hover:text-[#bddeff] font-[500] text-[23px] capitalize">
@@ -42,7 +40,7 @@ const Favourite = () => {
             </span>
           </div>
           <div className="scrollable">
-          {favouriteList.map((poke, index)=>{
+          {favorites.length>0 && favorites.map((poke, index)=>{
            return <div className="favBody flex items-center justify-between" key={index}>
               <img
                 className="w-24 h-24 mb-3 rounded-full shadow-xl cursor-pointer customeBgWithoutHover"
@@ -64,13 +62,14 @@ const Favourite = () => {
                 </span>
               </div>
               <FontAwesomeIcon
-                onClick={() =>dispatch(removeFromFavorites(poke))}
+                onClick={()=>toggleFavorite(poke)}
                 icon="heart"
                 className={`text-[red] float-right cursor-pointer w-[27px] h-[27px] self-start`}
               />
             </div>
-          }
-          )}            </div>
+        }
+          )}
+          </div>
 
           <button
             className="defaultBtn"

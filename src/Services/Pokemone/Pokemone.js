@@ -1,4 +1,3 @@
-// Pokemone.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const PokemonApi = createApi({
@@ -6,13 +5,13 @@ export const PokemonApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
   endpoints: (builder) => ({
     getPokemon: builder.query({
-      query: (name) => `${name}`,
+      query: (page) => `pokemon/?offset=${(page-1) * 6}&limit=6`,
     }),
     getPokemonByName: builder.query({
       query: (name) => `pokemon/${name}`,
     }),
     getPokemonByGenration: builder.query({
-      query: () => `generation`,
+      query: (name) => `generation/${name}`,
     }),
   }),
 });

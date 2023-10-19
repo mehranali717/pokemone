@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../../Components";
+import { Header, Sidebar } from "../../Components";
 
 const MainLayout =()=>{
     return <>
                 <Header />
-                <Outlet />
+                    <div className="flex justify-between">
+                        <Sidebar />
+                        <Outlet />
+                    </div>
     </>
 }
 export default MainLayout;

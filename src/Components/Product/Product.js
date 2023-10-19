@@ -1,16 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGetPokemonByNameQuery } from "../../Services/Pokemone/Pokemone";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToFavorites } from "../../Services/Pokemone/PokemoneSlice";
+import {useFavorites} from "../../Hooks/useFavorites";
 import "./Product.css";
 import { useState } from "react";
 const Product = ({ pokemone }) => {
-  const dispatch = useDispatch();
+  const [toggleFavorite] = useFavorites("favorites")
   const [isFavorite, setIsFavorite] = useState(false);
   const { data, error, isLoading } = useGetPokemonByNameQuery(pokemone.name);
-  // const { data:genData} = useGetPokemonByGenrationQuery(name);
-  // console.log({genData});
   const navigate = useNavigate();
   const onClick = (name) => {
     navigate("/detail", {
@@ -27,12 +24,10 @@ const Product = ({ pokemone }) => {
     return "Error loading Pokémon data";
   }
   return (
-    <div className="w-[350px] border rounded-lg shadow dark:bg-gray-800 p-5">
+    <div className="w-[250px] border rounded-lg shadow dark:bg-gray-800 p-5">
       <FontAwesomeIcon
-        onClick={() => {
-          dispatch(addToFavorites(data));
-          setIsFavorite((prev) => !prev);
-        }}
+        onClick={()=>{toggleFavorite(data);
+          setIsFavorite(Prev=>!Prev)}}
         icon="heart"
         className={`text-gray-200 float-right cursor-pointer w-[27px] h-[27px] heartRed${isFavorite}`}
       />
@@ -55,12 +50,12 @@ const Product = ({ pokemone }) => {
         <span className="text-sm text-gray-500 dark:text-gray-400">
           {toCentimeters(data.height)} Cm
         </span>
-        <a
+        <button
           onClick={() => onClick(pokemone.name)}
-          className="w-[200px] inline-block px-4 py-2 font-bold text-center text-[#4f4f4f] rounded-[20px] mt-6 tracking-[2px] cursor-pointer custome-bg"
+          className="inline-block px-4 py-2 font-bold text-center text-[#4f4f4f] rounded-[20px] mt-6 tracking-[2px] cursor-pointer custome-bg"
         >
           View Details
-        </a>
+        </button>
       </div>
     </div>
   );

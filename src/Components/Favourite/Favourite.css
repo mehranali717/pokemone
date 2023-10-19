@@ -31,12 +31,14 @@
     font-weight:300;
 }
 .scrollable {
-    height:530px;
+    height: 530px;
     overflow-y: auto;
-    &::-webkit-scrollbar{
-        display:none;
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
+
 .defaultBtn {
     border:1px solid #3f3f3f;
     font-size:16px;
