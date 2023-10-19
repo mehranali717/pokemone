@@ -4,7 +4,7 @@ import { Header, Sidebar } from "../../Components";
 const MainLayout =()=>{
     return <>
                 <Header />
-                    <div className="flex justify-between">
+                    <div className="flex ">
                         <Sidebar />
                         <Outlet />
                     </div>

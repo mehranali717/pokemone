@@ -12,7 +12,8 @@ const Detail =()=> {
         return "Error loading Pokémon data";
       }
       const imageSrcs = [data.sprites.back_default, data.sprites.back_shiny, data.sprites.front_default, data.sprites.front_shiny]
-      return <div className="w-[900px] border rounded-lg shadow dark:bg-gray-800 flex flex-col items-center p-4 ms-[400px]">
+      return <div className="mt-[100px] w-[100%] flex justify-center">
+        <div className="w-[900px] border rounded-lg shadow dark:bg-gray-800 flex flex-col items-center p-4">
                 <img
                 className="w-[130px] h-[130px] mb-3 rounded-full shadow-lg cursor-pointer custome-bg"
                 src={data.sprites.front_default}
@@ -24,7 +25,7 @@ const Detail =()=> {
                 <div className="flex flex-wrap justify-between gap-5">
                 {data.abilities && data.abilities.map((poke)=><span className="text-[#4f4f4f] tracking-[2px] font-bold custome-bg px-4 py-2 bg-[#e65c00] rounded-full capitalize">{poke.ability.name}</span>)}
                 </div>
-                <span className="divider" />
+                <span className="h-[2px] w-[100%] bg-white my-10" />
                 <h3 className="text-[#fff] text-[25px] text-center pb-3 capitalize self-start">Sprites</h3>
                 <div className="flex flex-wrap justify-between gap-5">
                 {imageSrcs.map((src)=><img
@@ -33,17 +34,18 @@ const Detail =()=> {
                             alt="pokemon"
                 />)}
                 </div>
-                <span className="divider" />
+                <span className="h-[2px] w-[100%] bg-white my-10" />
                 <h3 className="text-[#fff] text-[25px] text-center pb-3 capitalize self-start">Experience</h3>
                 <div className="flex flex-wrap justify-between gap-5">
                 <span className="text-[#4f4f4f] tracking-[2px] font-bold custome-bg px-4 py-2 bg-[#e65c00] rounded-full capitalize">{data.base_experience}</span>
                 </div>
-                <span className="divider" />
-                <h3 className="text-[#fff] text-[25px] text-center pb-3 capitalize self-start">Moves</h3>
+                <span className="h-[2px] w-[100%] bg-white my-10" />
+                {/* <h3 className="text-[#fff] text-[25px] text-center pb-3 capitalize self-start">Moves</h3>
                 <div className="flex flex-wrap justify-between gap-5">
                 {data.moves && data.moves.map((poke)=><span className="text-[#4f4f4f] tracking-[2px] font-bold custome-bg px-4 py-2 bg-[#e65c00] inline-block rounded-full capitalize">{poke.move.name}</span>)}
                 </div>
-                <span className="divider" />
+                <span className="divider" /> */}
             </div>
+      </div>
 }
 export default Detail;

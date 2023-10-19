@@ -7,7 +7,6 @@ import {useFavorites} from "../../Hooks/useFavorites";
 AOS.init();
 const Favourite = () => {
   const [favorites, toggleFavorite] = useFavorites("favorites")
-  console.log({favorites});
   const [isDisplay, setIsDisplay] = useState(false);
   return (
     <>
