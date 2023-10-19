@@ -7,7 +7,7 @@ const Routes =()=>{
             element:<MainLayout />,
             children:[
                 {path:"/",element:<Home/>},
-                {path:"/detail",element:<Detail/>},
+                {path:"/detail/:name",element:<Detail/>},
                 {path:"/genration" , element:<Genration />},
             ]
         }

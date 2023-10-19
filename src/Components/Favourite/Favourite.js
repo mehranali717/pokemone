@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "./Favourite.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -13,7 +13,7 @@ const Favourite = () => {
     <>
       <div
         onClick={() => {setIsDisplay((prev) => !prev)}}
-        className=" flex items-center gap-3 text-[#2b2f32] text-[#ffffff] hover:text-[#bddeff]  cursor-pointer"
+        className=" flex items-center gap-3 text-[#2b2f32] text-[#ffffff] hover:text-[#fcf903] cursor-pointer"
       >
         <div className="relative">
           <FontAwesomeIcon
@@ -24,7 +24,7 @@ const Favourite = () => {
             {favorites.length}
           </span>
         </div>
-        <span className="text-[#fff] hover:text-[#bddeff] font-[500] text-[23px] capitalize">
+        <span className="text-[#fff] hover:text-[#fcf903] font-[500] text-[23px] capitalize">
           Favourites
         </span>
       </div>

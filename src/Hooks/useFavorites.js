@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export function useFavorites(key) {
   const [favorites, setFavorites] = useState([]);
+  const favItem = useSelector((state)=>state.handleAddRemove.isTrue);
+
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem(key);
     if (storedFavorites) {
       setFavorites(JSON.parse(storedFavorites));
     }
-  }, [key]);
+  }, [key,favItem]);
   const toggleFavorite = (item) => {
     let data = JSON.parse(localStorage.getItem(key));
     if (data) {

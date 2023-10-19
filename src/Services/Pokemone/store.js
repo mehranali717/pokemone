@@ -6,8 +6,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 export const store = configureStore({
   reducer: {
     [PokemonApi.reducerPath]: PokemonApi.reducer,
-    addToFavorites: PokemoneSlice,
-    removeFromFavorites:PokemoneSlice,
+    handleAddRemove: PokemoneSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(PokemonApi.middleware),

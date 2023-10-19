@@ -2,20 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGetPokemonByNameQuery } from "../../Services/Pokemone/Pokemone";
 import { useNavigate } from "react-router-dom";
 import {useFavorites} from "../../Hooks/useFavorites";
+import {handleAddRemove} from "../../Services/Pokemone/PokemoneSlice"
 import "./Product.css";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 const Product = ({ pokemone }) => {
-  const [toggleFavorite] = useFavorites("favorites")
-  const [isFavorite, setIsFavorite] = useState(false);
-  const { data, error, isLoading } = useGetPokemonByNameQuery(pokemone.name);
+  const dispatch = useDispatch();
+  const [favorites, toggleFavorite] = useFavorites("favorites")
   const navigate = useNavigate();
-  const onClick = (name) => {
-    navigate("/detail", {
-      state: {
-        name: name,
-      },
-    });
-  };
+  const { data, error, isLoading } = useGetPokemonByNameQuery(pokemone.name);
   if (isLoading) {
     return "Loading...";
   }
@@ -23,11 +17,21 @@ const Product = ({ pokemone }) => {
   if (error) {
     return "Error loading Pokémon data";
   }
+  const isFavorite = favorites.some(
+    (favorite) => favorite.name === data.name
+  );
+  const onClick = (name) => {
+    navigate(`/detail/${pokemone.name}`, {
+      state: {
+        name: name,
+      },
+    });
+  };
+  
   return (
     <div className="w-[250px] border rounded-lg shadow dark:bg-gray-800 p-5">
       <FontAwesomeIcon
-        onClick={()=>{toggleFavorite(data);
-          setIsFavorite(Prev=>!Prev)}}
+        onClick={()=>{toggleFavorite(data);dispatch(handleAddRemove(prev=>!prev))}}
         icon="heart"
         className={`text-gray-200 float-right cursor-pointer w-[27px] h-[27px] heartRed${isFavorite}`}
       />
