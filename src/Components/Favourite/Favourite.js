@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import "./Favourite.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {useFavorites} from "../../Hooks/useFavorites";
 AOS.init();
-const Favourite = () => {
+const Favourite = memo(() => {
   const [favorites, toggleFavorite] = useFavorites("favorites")
   const [isDisplay, setIsDisplay] = useState(false);
   return (
@@ -80,7 +80,7 @@ const Favourite = () => {
       )}
     </>
   );
-};
+});
 export default Favourite;
 const toKilograms = (hg) => {
   return hg / 10;

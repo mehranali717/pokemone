@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useGetPokemonByNameQuery } from "../../Services/Pokemone/Pokemone";
+import { useGetPokemonByNameQuery } from "../../Services/Pokemone/PokemoneApi";
 import { useNavigate } from "react-router-dom";
 import {useFavorites} from "../../Hooks/useFavorites";
-import {handleAddRemove} from "../../Services/Pokemone/PokemoneSlice"
+import { handleAddRemove} from "../../Services/Pokemone/PokemoneSlice"
 import "./Product.css";
 import { useDispatch } from "react-redux";
+import { memo } from "react";
 const Product = ({ pokemone }) => {
+  console.log('product')
   const dispatch = useDispatch();
   const [favorites, toggleFavorite] = useFavorites("favorites")
   const navigate = useNavigate();
@@ -29,45 +31,51 @@ const Product = ({ pokemone }) => {
   };
   
   return (
-    <div className="w-[250px] border rounded-lg shadow dark:bg-gray-800 p-5">
-      <FontAwesomeIcon
-        onClick={()=>{toggleFavorite(data);dispatch(handleAddRemove(prev=>!prev))}}
-        icon="heart"
-        className={`text-gray-200 float-right cursor-pointer w-[27px] h-[27px] heartRed${isFavorite}`}
-      />
-      <div className="flex flex-col items-center">
-        <img
-          onClick={() => onClick(pokemone.name)}
-          className="w-24 h-24 mb-3 rounded-full shadow-lg cursor-pointer custome-bg"
-          src={data.sprites.front_default}
-          alt="pokemon"
-        />
-        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white capitalize">
-          {pokemone.name}
-        </h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400 capitalize">
-          {data.types[0].type.name}
-        </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
-          {toKilograms(data.weight)} Kg
-        </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
-          {toCentimeters(data.height)} Cm
-        </span>
-        <button
-          onClick={() => onClick(pokemone.name)}
-          className="inline-block px-4 py-2 font-bold text-center text-[#4f4f4f] rounded-[20px] mt-6 tracking-[2px] cursor-pointer custome-bg"
+    <div className="border  p-[20px] rounded-lg bg-[#f0f0f0] shadow-xl   w-[450px]">
+      <div className="px-2 py-4">
+        <div className="flex justify-between items-center text-[22px] text-[#333] font-sans font-bold capitalize gap-x-[20px]">
+          <h2 className="block "> {data.name}</h2>
+          <FontAwesomeIcon
+            onClick={()=>{toggleFavorite(data);dispatch(handleAddRemove(prev=>!prev))}}
+            icon="heart"
+            className={`text-gray-500 float-right cursor-pointer w-[27px] h-[27px] heartRed${isFavorite}`}
+          />
+        </div>
+        <div
+          className="my-[30px] mx-auto w-[150px] h-[150px] 
+                p-[5px] bg-white shadow-xl
+                rounded-full"
         >
-          View Details
-        </button>
+          <img
+            className="w-full h-full"
+            src={data.sprites.front_default}
+            alt={data?.name}
+          />
+        </div>
+        <div className="py-[20px] border-b flex border-b-[#4f4f4f] justify-between">
+          <h3 className="block text-center text-[18px] text-[#333] font-sans font-bold">
+            Weight
+          </h3>
+          <p className="block text-center text-[18px] text-[#333] font-sans font-bold">
+            {data.weight}lbs
+          </p>
+        </div>
+        <div className="py-[20px] flex justify-between">
+          <h3 className="block text-center text-[18px] text-[#333] font-sans font-bold">
+            Height
+          </h3>
+          <p className="block text-center text-[18px] text-[#333] font-sans font-bold">
+            {data.height}cm
+          </p>
+        </div>
       </div>
+      <button
+        onClick={() => onClick(data.name)}
+        className="bg-[#111827] hover:bg-[#F6BD0E] text-white font-bold py-2 px-5 rounded-lg text-base mx-auto my-2 transition-colors duration-300 block"
+      >
+        View Details
+      </button>
     </div>
   );
-};
-export default Product;
-const toKilograms = (hg) => {
-  return hg / 10;
-};
-const toCentimeters = (val) => {
-  return val * 10;
-};
+ };
+export default memo(Product);
