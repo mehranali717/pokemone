@@ -4,7 +4,7 @@ import Detail from "../Detail/Detail";
 import {
   useGetAllPokemonQuery,
   useGetPokemonByNameQuery,
-} from "../../Services/Pokemone/Pokemone";
+} from "../../Services/Pokemone/PokemoneApi";
 import "./Comparison.css";
 import { PokimoneDetail, Product } from "../../Components";
 import Loader from "../../Loader/Loader";
@@ -19,7 +19,6 @@ function Comparison() {
     isError: allPokimoneLoadingError,
     isSuccess: successLoading,
   } = useGetAllPokemonQuery("");
-  console.log({allPokimone});
   const { data: searchedPokemon1, isLoading: isLoadingData1, isSuccess:isSuccessLoaded1 } =
     useGetPokemonByNameQuery(pokemone1ToSearch);
   const { data: searchedPokemon2, isLoading: isLoadingData2, isSuccess:isSuccessLoaded2 } =
@@ -49,7 +48,7 @@ function Comparison() {
                   <option value={Pokemon.name}>{Pokemon.name}</option>
                 ))}
               </select>
-              <PokimoneDetail data={searchedPokemon1} />
+              {searchedPokemon1!=="" && <PokimoneDetail data={searchedPokemon1} />}
              {/* {isSuccessLoaded1 && searchedPokemon1 && <PokimoneDetail data={searchedPokemon1} />} */}
             </div>
             <FontAwesomeIcon

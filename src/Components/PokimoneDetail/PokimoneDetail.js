@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 const PokimoneDetail = ({data}) => {
     return  <>
     {
-      data.name && <div className="w-[600px] mx-auto py-10 mt-[100px]">
-      <div className="border  p-[50px] rounded-lg bg-white shadow-xl w-full mx-auto">
+      data.name && <div className="w-[600px] mx-auto py-10">
+      <div className="border  p-[50px] rounded-lg bg-[#f0f0f0] shadow-xl w-full mx-auto">
         <div className="flex flex-col items-center gap-x-[30px]">
           <div className="py-[20px]">
             <span className="block text-center text-[30px] text-[#333] font-sans font-bold capitalize">
@@ -98,4 +100,4 @@ const PokimoneDetail = ({data}) => {
     
     </>
 }
-export default PokimoneDetail;
+export default memo(PokimoneDetail);

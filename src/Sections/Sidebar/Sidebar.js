@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useGetPokemonByGenrationQuery } from "../../Services/Pokemone/Pokemone";
+import { useGetPokemonByGenrationQuery } from "../../Services/Pokemone/PokemoneApi";
 
 const Sidebar = ()=>{
   const navigate = useNavigate();

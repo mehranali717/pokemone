@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useGetPokemonByNameQuery } from "../../Services/Pokemone/Pokemone";
+import { useGetPokemonByNameQuery } from "../../Services/Pokemone/PokemoneApi";
 import { useNavigate } from "react-router-dom";
 import {useFavorites} from "../../Hooks/useFavorites";
 import { handleAddRemove} from "../../Services/Pokemone/PokemoneSlice"

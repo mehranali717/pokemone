@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useGetPokemonByGenrationQuery } from "../../Services/Pokemone/Pokemone";
+import { useGetPokemonByGenrationQuery } from "../../Services/Pokemone/PokemoneApi";
 import { Product } from "../../Components";
 
 const Genration = () => {

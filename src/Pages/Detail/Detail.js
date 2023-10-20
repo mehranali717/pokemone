@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useGetPokemonByNameQuery } from "../../Services/Pokemone/Pokemone";
+import { useGetPokemonByNameQuery } from "../../Services/Pokemone/PokemoneApi";
 import { PokimoneDetail } from "../../Components";
 const Detail =()=> {
     const location = useLocation();
@@ -14,9 +14,9 @@ const Detail =()=> {
       }
       const imageSrcs = [data.sprites.back_default, data.sprites.back_shiny, data.sprites.front_default, data.sprites.front_shiny]
       return (
-        <>
+        <div className=" mt-[100px] w-[100%]">
              {isSuccess && <PokimoneDetail data={data}/>}
-        </>
+        </div>
       );
 }
 export default Detail;

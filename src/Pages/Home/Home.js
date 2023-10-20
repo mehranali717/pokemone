@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import "./Home.css";
-import { useGetPokemonQuery } from '../../Services/Pokemone/Pokemone';
+import { useGetPokemonQuery } from '../../Services/Pokemone/PokemoneApi';
 import { Input, Product } from '../../Components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CustomModal from '../../Modal/Modal';
-
 const Home = () => {
   const[page ,setPage] =useState(1)
   const { data, error, isLoading } = useGetPokemonQuery(page);

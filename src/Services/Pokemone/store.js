@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { PokemonApi } from './Pokemone';
+import { PokemonApi } from './PokemoneApi';
 import PokemoneSlice from './PokemoneSlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
