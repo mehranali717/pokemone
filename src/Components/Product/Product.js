@@ -5,7 +5,9 @@ import {useFavorites} from "../../Hooks/useFavorites";
 import { handleAddRemove} from "../../Services/Pokemone/PokemoneSlice"
 import "./Product.css";
 import { useDispatch } from "react-redux";
+import { memo } from "react";
 const Product = ({ pokemone }) => {
+  console.log('product')
   const dispatch = useDispatch();
   const [favorites, toggleFavorite] = useFavorites("favorites")
   const navigate = useNavigate();
@@ -76,4 +78,4 @@ const Product = ({ pokemone }) => {
     </div>
   );
  };
-export default Product;
+export default memo(Product);
