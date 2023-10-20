@@ -5,7 +5,6 @@ export function useFavorites(key) {
   const [favorites, setFavorites] = useState([]);
   const favItem = useSelector((state)=>state.handleAddRemove.isTrue);
 
-
   useEffect(() => {
     const storedFavorites = localStorage.getItem(key);
     if (storedFavorites) {
